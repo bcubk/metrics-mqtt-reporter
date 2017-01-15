@@ -17,21 +17,29 @@
 package com.bcubk;
 
 /**
- * This enum represents the MQTT QOS (Quality-of-service) levels.
- * See {@link org.eclipse.paho.client.mqttv3.MqttMessage#setQos(int)} for further information.
- *
- * @author Baris Cubukcuoglu
+ * Created by baris on 26.12.16.
  */
-public enum QualityOfService {
-		AT_MOST_ONCE(0), AT_LEAST_ONCE(1), EXACTLY_ONCE(2);
+public class DiscreteTimeValueBuilder {
+		private long timeStamp;
+		private String value;
+		private String name;
 
-		private final int qos;
-
-		QualityOfService(int qos) {
-				this.qos = qos;
+		public DiscreteTimeValueBuilder setTimeStamp(long timeStamp) {
+				this.timeStamp = timeStamp;
+				return this;
 		}
 
-		public int getQos() {
-				return qos;
+		public DiscreteTimeValueBuilder setValue(String value) {
+				this.value = value;
+				return this;
+		}
+
+		public DiscreteTimeValueBuilder setName(String name) {
+				this.name = name;
+				return this;
+		}
+
+		public DiscreteTimeValue build() {
+				return new DiscreteTimeValue(this.timeStamp, this.value, this.name);
 		}
 }

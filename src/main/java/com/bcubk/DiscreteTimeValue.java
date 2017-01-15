@@ -16,22 +16,33 @@
 
 package com.bcubk;
 
+import java.io.Serializable;
+
 /**
- * This enum represents the MQTT QOS (Quality-of-service) levels.
- * See {@link org.eclipse.paho.client.mqttv3.MqttMessage#setQos(int)} for further information.
+ * This class represents a discrete time value with an timestamp, name and value. This representation should be absolutely unique.
  *
  * @author Baris Cubukcuoglu
  */
-public enum QualityOfService {
-		AT_MOST_ONCE(0), AT_LEAST_ONCE(1), EXACTLY_ONCE(2);
+class DiscreteTimeValue implements Serializable {
+		private final long timeStamp;
+		private final String value;
+		private final String name;
 
-		private final int qos;
-
-		QualityOfService(int qos) {
-				this.qos = qos;
+		public DiscreteTimeValue(long timeStamp, String value, String name) {
+				this.timeStamp = timeStamp;
+				this.value = value;
+				this.name = name;
 		}
 
-		public int getQos() {
-				return qos;
+		public long getTimeStamp() {
+				return timeStamp;
+		}
+
+		public String getValue() {
+				return value;
+		}
+
+		public String getName() {
+				return name;
 		}
 }

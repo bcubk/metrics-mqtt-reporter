@@ -16,22 +16,32 @@
 
 package com.bcubk;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
- * This enum represents the MQTT QOS (Quality-of-service) levels.
- * See {@link org.eclipse.paho.client.mqttv3.MqttMessage#setQos(int)} for further information.
- *
- * @author Baris Cubukcuoglu
+ * Created by baris on 26.12.16.
  */
-public enum QualityOfService {
-		AT_MOST_ONCE(0), AT_LEAST_ONCE(1), EXACTLY_ONCE(2);
+public class SeriesSet {
+		private final List<DiscreteTimeValue> discreteTimeValues = new LinkedList<>();
 
-		private final int qos;
-
-		QualityOfService(int qos) {
-				this.qos = qos;
+		public boolean isEmpty() {
+				return this.discreteTimeValues.isEmpty();
 		}
 
-		public int getQos() {
-				return qos;
+		public int size() {
+				return discreteTimeValues.size();
+		}
+
+		public void addDiscreteTimeValue(final DiscreteTimeValue discreteTimeValue) {
+				this.discreteTimeValues.add(discreteTimeValue);
+		}
+
+		public void resetSeries() {
+				this.discreteTimeValues.clear();
+		}
+
+		public List<DiscreteTimeValue> getDiscreteTimeValues() {
+				return discreteTimeValues;
 		}
 }

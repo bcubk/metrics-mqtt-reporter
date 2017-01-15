@@ -16,22 +16,11 @@
 
 package com.bcubk;
 
+import static org.junit.Assert.*;
+
 /**
- * This enum represents the MQTT QOS (Quality-of-service) levels.
- * See {@link org.eclipse.paho.client.mqttv3.MqttMessage#setQos(int)} for further information.
- *
- * @author Baris Cubukcuoglu
+ * Created by baris on 25.11.16.
  */
-public enum QualityOfService {
-		AT_MOST_ONCE(0), AT_LEAST_ONCE(1), EXACTLY_ONCE(2);
+public class SeriesBuilderTest {
 
-		private final int qos;
-
-		QualityOfService(int qos) {
-				this.qos = qos;
-		}
-
-		public int getQos() {
-				return qos;
-		}
 }
